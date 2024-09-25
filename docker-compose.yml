@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+ back:
+  env_file:
+   - .env
+  build: .
+  container_name: back
+  restart: unless-stopped
+  ports:
+   - 3001:3000
+  networks:
+   - nginxproxyman
+
+networks:
+ nginxproxyman:
+  external: true

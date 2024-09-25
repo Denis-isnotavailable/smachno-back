@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Інформаційний лист</title>
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Marmelad&family=Montserrat:wght@300..600&display=swap"
+       rel="stylesheet">
+
+ <style>
+  body {
+   font-family: "Montserrat", sans-serif;
+   font-weight: 300;
+   color: #161616;
+   margin: 0;
+  }
+
+  ul {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+  }
+
+  h1,
+  p {
+   margin: 0;
+  }
+
+  section {
+   max-width: 1120px;
+   margin: 0 auto;
+   padding: 16px;
+   background-color: #fffdf6;
+   font-size: 20px;
+  }
+
+  h1 {
+   margin-bottom: 40px;
+   font-family: "Marmelad", sans-serif;
+   font-weight: 400;
+   font-size: 32px;
+   text-align: center;
+  }
+
+  table {
+   width: 100%;
+   margin-bottom: 12px;
+   border: 1px solid #808080;
+   border-radius: 24px;
+   border-spacing: 0 12px;
+   padding: 12px;
+   background: rgba(253, 253, 253, 0.5);
+   font-size: 10px;
+  }
+
+  .middle-cell {
+   min-width: 50px;
+  }
+
+  .total {
+   margin-right: 36px;
+   margin-bottom: 36px;
+   text-align: right;
+   font-size: 24px;
+   font-weight: 500;
+  }
+
+  .total-price-mob {
+   margin-bottom: 40px;
+  }
+
+  ul {
+   margin-bottom: 40px;
+  }
+
+  li {
+   line-height: 1.3;
+   max-width: 384px;
+  }
+
+  .paid-child {
+   margin-bottom: 40px;
+  }
+
+  .img-box {
+   width: 232px;
+   height: 232px;
+   margin: 0 auto;
+  }
+
+  img {
+   display: block;
+   max-width: 100%;
+   height: 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+   table {
+    font-size: 18px;
+   }
+
+   .content-box {
+    position: relative;
+    display: flex;
+   }
+
+   ul {
+    margin-bottom: 0;
+   }
+
+   .img-box {
+    position: absolute;
+    top: -38px;
+    left: 488px;
+   }
+  }
+
+  @media screen and (min-width: 1280px) {
+   section {
+    padding: 80px;
+   }
+
+   table {
+    border-spacing: 0 24px;
+    padding: 24px;
+    font-size: 20px;
+   }
+
+   .middle-cell,
+   .before-last-cell {
+    padding-right: 55px;
+   }
+
+   .total-price-mob {
+    display: none;
+   }
+
+   ul {
+    width: 550px;
+   }
+
+   .img-box {
+    left: 788px;
+   }
+
+  }
+ </style>
+</head>
+<body>
+<section>
+ <h1>Нове замовлення</h1>
+
+ <table>
+  <tbody>
+  {{#each cartProducts}}
+   <tr>
+    <td class="middle-cell">{{name}}</td>
+    <td class="middle-cell">{{amount}} {{packaging}}</td>
+    <td class="middle-cell">
+      {{#if forMe}}
+        {{forMe}} для себе
+      {{/if}}
+      {{#if forArmy}}
+        {{forArmy}} для ЗСУ
+      {{/if}}
+      {{#if forGrow}}
+        {{forGrow}} на виріст
+      {{/if}}
+    <td class="middle-cell">по {{price}} грн</td>
+   </tr>
+  {{/each}}
+  </tbody>
+ </table>
+ <p class="total"><strong>Всього {{totalPrice}} грн</strong></p>
+ <div class="content-box">
+  <ul>
+   <li>
+    Замовлення № {{numberOrder}}
+   </li>
+   <li>
+    {{name}} {{surname}}
+   </li>
+   <li>
+    Телефон: {{phone}}
+   </li>
+    <li>
+      Область: {{area}}
+    </li>
+   <li>
+     Місто: {{city}}
+   </li>
+    {{#if office}}
+      <li>
+        Номер відділення: {{office}}
+      </li>
+   {{else if box}}
+      <li>
+        Адреса поштомату: {{box}}
+      </li>
+   {{else}}
+      <li>
+        Адреса доставки: {{address}}
+      </li>
+   {{/if}}
+  </ul>
+
+  <div class="img-box">
+   <img src="cid:imagename" alt="red cat" />
+  </div>
+ </div>
+</section>
+</body>
+</html>
